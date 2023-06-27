@@ -1,6 +1,6 @@
 package org.example.car;
 
-public abstract class Car {
+public abstract class Car implements IMove{
     private String brand;
     private String model;
     private String colour;
@@ -60,4 +60,5 @@ public abstract class Car {
     public Gear getGear() {
         return gear;
     }
+    public abstract String move();
 }

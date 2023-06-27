@@ -1,6 +1,6 @@
 package org.example.car;
 
-public class PetrolCar extends Car implements IMove{
+public class PetrolCar extends Car {
     private String fuel;
 
     public PetrolCar(String brand, String model, String colour, String type, Engine engine, Gear gear, Tyre tyre, double price){

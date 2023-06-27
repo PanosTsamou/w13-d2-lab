@@ -13,6 +13,7 @@ public class Customer {
     public Customer(String name, double money, ArrayList<IMove> collectionOfCars) {
         this.name = name;
         this.money = money;
+        this.collectionOfCars = collectionOfCars;
     }
 
     public void  addCar(IMove car){

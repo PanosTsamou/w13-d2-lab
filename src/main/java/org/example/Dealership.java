@@ -23,8 +23,10 @@ public class Dealership {
     public  IMove  getACarFromStock(IMove car){
         if (stock.contains(car)) {
             return stock.remove(stock.indexOf(car));
+        }else {
+            return  null;
         }
-        return  null;
+
     }
     public void addMoniesToTill(double amount){
         this.till += amount;
@@ -32,5 +34,12 @@ public class Dealership {
 
     public void reduceMonies(double amount){
         this.till -= amount;
+    }
+
+    public void buy(IMove car, Customer customer){
+        IMove carWantToBuy = getACarFromStock(car);
+        customer.addCar(carWantToBuy);
+        customer.reduceMonies(carWantToBuy.getPrice());
+        addMoniesToTill(carWantToBuy.getPrice());
     }
 }

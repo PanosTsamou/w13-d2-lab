@@ -1,8 +1,12 @@
 import org.example.Customer;
 import org.example.Dealership;
 import org.example.car.*;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 public class CustomerTest {
 
@@ -33,9 +37,17 @@ public class CustomerTest {
     }
 
     @Test
-    public void customerHasCar(){
-        assertEquals("")
+    public void customerHasMoney(){
+        assertEquals(30000, customer.getMoney(),.00);
     }
+
+    @Test
+    public void customerCanBuyCar(){
+        dealership.buy(car2, customer);
+        assertEquals(10000, customer.getMoney(), .0);
+    }
+
+
 
 
 }
