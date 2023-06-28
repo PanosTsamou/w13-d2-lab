@@ -1,6 +1,12 @@
 package org.example.car;
 
-public abstract class Car implements IMove{
+import org.example.behaviours.IBuyable;
+import org.example.behaviours.IMove;
+import org.example.carparts.Engine;
+import org.example.carparts.Tyre;
+import sun.nio.cs.ext.IBM037;
+
+public abstract class Car implements IMove, IBuyable {
     private String brand;
     private String model;
     private String colour;
@@ -57,8 +63,8 @@ public abstract class Car implements IMove{
         return engine.getSizeAsString();
     }
 
-    public Gear getGear() {
-        return gear;
+    public String getGear() {
+        return gear.getValue();
     }
     public abstract String move();
 }

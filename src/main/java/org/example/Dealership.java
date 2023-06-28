@@ -1,14 +1,17 @@
 package org.example;
 
-import org.example.car.IMove;
+import org.example.behaviours.IBuyable;
+import org.example.behaviours.IMove;
+import org.example.behaviours.IPurchase;
+import org.example.behaviours.ISeller;
 
 import java.util.ArrayList;
 
-public class Dealership {
-    private ArrayList<IMove> stock;
+public class Dealership implements ISeller {
+    private ArrayList<IBuyable> stock;
     private double till;
 
-    public Dealership(ArrayList<IMove> stock, double till){
+    public Dealership(ArrayList<IBuyable> stock, double till){
         this.stock = stock;
         this.till = till;
     }
@@ -17,10 +20,10 @@ public class Dealership {
         return till;
     }
 
-    public void addCarToStock(IMove car){
+    public void addCarToStock(IBuyable car){
         this.stock.add(car);
     }
-    public  IMove  getACarFromStock(IMove car){
+    public  IBuyable  getACarFromStock(IBuyable car){
         if (stock.contains(car)) {
             return stock.remove(stock.indexOf(car));
         }else {
@@ -36,10 +39,8 @@ public class Dealership {
         this.till -= amount;
     }
 
-    public void buy(IMove car, Customer customer){
-        IMove carWantToBuy = getACarFromStock(car);
-        customer.addCar(carWantToBuy);
-        customer.reduceMonies(carWantToBuy.getPrice());
-        addMoniesToTill(carWantToBuy.getPrice());
+    public void sell(IBuyable car, IPurchase customer){
+        customer.buy(getACarFromStock(car));
+        addMoniesToTill(car.getPrice());
     }
 }

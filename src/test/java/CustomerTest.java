@@ -1,6 +1,10 @@
 import org.example.Customer;
 import org.example.Dealership;
+import org.example.behaviours.IBuyable;
+import org.example.behaviours.IMove;
 import org.example.car.*;
+import org.example.carparts.Engine;
+import org.example.carparts.Tyre;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,11 +31,11 @@ public class CustomerTest {
         car1 = new PetrolCar("BMW", "2019", "Blue", "SUV", engine, Gear.AUTOMATIC, tyre1, 40000);
         car2 = new PetrolCar("Audi", "2020", "Blue", "Sports", engine, Gear.MANUAL, tyre2, 20000);
         car3 = new PetrolCar("Toyota", "2000", "white", "Pick-up", engine, Gear.MANUAL, tyre1, 10000);
-        ArrayList<IMove> collCar = new ArrayList<>();
-        collCar.add((IMove) car3);
-        ArrayList<IMove> stockCar = new ArrayList<>();
-        stockCar.add((IMove) car2);
-        stockCar.add((IMove) car1);
+        ArrayList<IBuyable> collCar = new ArrayList<>();
+        collCar.add((IBuyable) car3);
+        ArrayList<IBuyable> stockCar = new ArrayList<>();
+        stockCar.add((IBuyable) car2);
+        stockCar.add((IBuyable) car1);
         customer = new Customer("Panos", 30000, collCar);
         dealership = new Dealership(stockCar, 100000);
     }
@@ -43,8 +47,13 @@ public class CustomerTest {
 
     @Test
     public void customerCanBuyCar(){
-        dealership.buy(car2, customer);
+        customer.buy(car2);
         assertEquals(10000, customer.getMoney(), .0);
+    }
+    @Test
+    public void canBuyFromDealer(){
+        dealership.sell(car2, customer);
+        assertEquals(120000, dealership.getTill(), .00);
     }
 
 

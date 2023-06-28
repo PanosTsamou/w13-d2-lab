@@ -1,5 +1,8 @@
 package org.example.car;
 
+import org.example.carparts.Engine;
+import org.example.carparts.Tyre;
+
 public class ElectricCar extends Car  {
     private String fuel;
 

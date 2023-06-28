@@ -1,4 +1,6 @@
-package org.example.car;
+package org.example.carparts;
+
+import org.example.car.Weather;
 
 import java.sql.PreparedStatement;
 

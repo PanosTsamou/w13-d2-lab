@@ -1,4 +1,4 @@
-package org.example.car;
+package org.example.carparts;
 
 public class Engine {
     private double size;
